@@ -1,4 +1,4 @@
 sticky_notes
 ============
 
-A cross platform clone of 'Sticky Notes' in Windows
+A cross platform clone of 'Sticky Notes'
