@@ -22,7 +22,7 @@ import javax.swing.event.DocumentListener;
 public class Main {
 
     private static File f;
-    private static double width_constant = 0.13; /* width of the panel is 13% of the width of the screen */
+    private static double width_constant = -1; /* width of the panel is 13% of the width of the screen */
 
 
     public static void main(String args[]) throws Exception {
@@ -40,6 +40,8 @@ public class Main {
                     System.exit(-1);
                 } else {
                     System.out.println("using default file: " + f.getAbsolutePath());
+                    System.out.println("setting default width constant: " + width_constant);
+                    width_constant = 0.13;
                 }
             } else if (os.toLowerCase().contains("ubuntu")) {
                 f = new File("~/Desktop/todo.txt");
@@ -48,14 +50,14 @@ public class Main {
                     System.exit(-1);
                 } else {
                     System.out.println("using default file: " + f.getAbsolutePath());
+                    System.out.println("setting default width constant: " + width_constant);
+                    width_constant = 0.13;
                 }
             }
 
-            System.out.println("setting default width constant: "+width_constant);
-            width_constant = 0.13;
-        } else {
-
-            width_constant = Double.parseDouble(args[1]);
+            if (width_constant != -1) {
+                width_constant = Double.parseDouble(args[1]);
+            }
 
             f = new File(args[0]);
             if (!(f.exists() && f.isFile())) {
@@ -125,6 +127,7 @@ public class Main {
             frame.setBounds(xUpperLeftCorner, 0, frameWidth, frameLength);
             frame.setUndecorated(true);
             frame.setVisible(true);
+
         }
     }
 }
