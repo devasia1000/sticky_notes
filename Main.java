@@ -26,11 +26,13 @@ public class Main {
 
 
     public static void main(String args[]) throws Exception {
-        if (args.length != 1) {
-            System.out.println("Usage: java -jar tasklist.jar <path_to_file>");
+        if (args.length != 2) {
+            System.out.println("Usage: java -jar tasklist.jar <path_to_file> <percentage_width>");
             System.exit(-1);
         }
 
+        width_constant=Double.parseDouble(args[1]);
+        
         f = new File(args[0]);
         if (!(f.exists() && f.isFile())) {
             System.err.println("file does not exist");
